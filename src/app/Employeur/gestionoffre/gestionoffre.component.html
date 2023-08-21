@@ -1,0 +1,245 @@
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+</head>
+<main id="main" class="main">
+  <div class="d-flex justify-content-center mt-2">
+     <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1">Ajouter</button>
+   </div>
+ 
+ <table class="table">
+   <thead>
+     <tr>
+       <th scope="col">#</th>
+       <th scope="col">nom</th>
+       <th scope="col">categorie-offre</th>
+       <th scope="col">image</th>
+       <th scope="col">dateexpiration</th>
+       <th scope="col">description</th>
+       <th scope="col">action</th>
+     </tr>
+   </thead>
+   <tbody>
+     <tr *ngFor="let offre of offres; let i = index">
+       <th scope="row">{{ i + 1 }}</th>
+       <td>{{ offre.nom }}</td>
+       <td>{{ offre.categorieoffre }}</td>
+       <td>{{offre.image}}<img  alt="Offer Image" height="50"></td>
+       <td>{{ offre.dateexpiration | date:'medium' }}</td>
+       <td>{{ offre.description }}</td>
+       <td>
+         <!-- Add edit and delete buttons here -->
+         <button class="btn btn-info"  data-bs-toggle="modal" data-bs-target="#myModal" (click)="viewOfferDetails(offre.id)">
+          <i class="fas fa-eye"></i> 
+      </button>
+      <button (click)="navigateToModifierOffer(offre.id)" class="btn btn-primary">
+        <i class="fas fa-pencil-alt"></i> 
+     </button>
+     
+      <button class="btn btn-danger" (click)="confirmDelete(offre.id)">
+        <i class="fas fa-trash-alt"></i>
+      </button>
+      
+      
+       </td>
+     </tr>
+   </tbody>
+ </table>
+ </main>
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel1">Ajout offre</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       
+        <!-- Your application form or content here -->
+        <form [formGroup]="offreForm">
+ 
+          <div class="row mb-3">
+            <label for="inputNom" class="col-sm-2 col-form-label">nom</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" formControlName="nom">
+            </div>
+          </div>
+          
+          <div class="row mb-3">
+            <label for="inputPassword" class="col-sm-2 col-form-label">description</label>
+            <div class="col-sm-10">
+              <textarea class="form-control" style="height: 100px" formControlName="description"></textarea>
+            </div>
+         
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">Select category:</label>
+            <div class="col-sm-10">
+              <select class="form-select" formControlName="selectedCategory">
+                <option value="" disabled>Select category</option>
+                <option value="IT">IT</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Finance">Finance</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="row mb-3">
+            <label for="inputDate" class="col-sm-2 col-form-label">Date d'expiration</label>
+            <div class="col-sm-10">
+              <input type="date" class="form-control" id="inputDate" name="inputDate" formControlName="dateexpiration">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="inputimage" class="col-sm-2 col-form-label">image</label>
+            <div class="col-sm-10">
+              <input class="form-control" type="file" (change)="onImageSelected($event)" formControlName="image">
+            </div>
+          </div>
+          
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+              <button type="button" class="btn btn-primary" (click)="createOffre()">enregistrer</button>
+            </div>
+          </div>
+        
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-primary">Envoyer</button>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+<!-- modal pour consultation -->
+<div class="modal" tabindex="-1" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Informations</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Nom:</strong> {{ selectedOffer?.nom }}</p>
+        <p><strong>Catégorie:</strong> {{ selectedCategory }}</p>
+        <p><strong>Description:</strong> {{ selectedOffer?.description }}</p>
+        <p><strong>Date d'expiration:</strong> {{ selectedOffer?.dateexpiration | date:'medium' }}</p>
+        <!-- Add more properties here -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--  Modal pour modifier 
+
+<div class="modal fade" id="modifiermodal" tabindex="-1" aria-labelledby="Modalmodifier" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="Modalmodifier">modifier offre</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       
+        Your application form or content here 
+        <form>
+         
+          <div class="row mb-3">
+            <label for="inputNom" class="col-sm-2 col-form-label">nom</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" formControlName="nom">
+            </div>
+          </div>
+          
+          <div class="row mb-3">
+            <label for="inputPassword" class="col-sm-2 col-form-label">description</label>
+            <div class="col-sm-10">
+              <textarea class="form-control" style="height: 100px" formControlName="description"></textarea>
+            </div>
+         
+          </div>
+           <div class="row mb-3">
+            <label for="inputcategorie" class="col-sm-2 col-form-label">categorie-offre</label>
+            <div class="col-sm-10">
+              <div class="d-flex align-items-center">
+                <label for="dropdownMenuButton" class="mr-2">Select category:</label>
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                   
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" >IT</a></li>
+                    <li><a class="dropdown-item">Marketing</a></li>
+                    <li><a class="dropdown-item" >Finance</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div> 
+
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">Select category:</label>
+            <div class="col-sm-10">
+              <select class="form-select" formControlName="selectedCategory">
+                <option value="" disabled>Select category</option>
+                <option value="IT">IT</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Finance">Finance</option>
+              </select>
+            </div>
+          </div>
+          
+          
+          
+          
+         
+         
+          <div class="row mb-3">
+            <label for="inputDate" class="col-sm-2 col-form-label">Date d'expiration</label>
+            <div class="col-sm-10">
+              <input type="date" class="form-control" id="inputDate" name="inputDate" formControlName="dateexpiration" >
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="inputimage" class="col-sm-2 col-form-label">image</label>
+            <div class="col-sm-10">
+              <input class="form-control" type="file" (change)="onImageSelected($event)" formControlName="image">
+           
+
+
+            </div>
+          </div>
+          
+
+          
+          
+
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+              <button type="button" class="btn btn-primary">Modifier</button>
+
+            </div>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-primary">Envoyer</button>
+      </div>
+    </div>
+  </div>
+  
+</div>
+ -->

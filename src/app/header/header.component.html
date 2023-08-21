@@ -1,0 +1,73 @@
+<header id="header" class="header fixed-top d-flex align-items-center">
+
+  <div class="d-flex align-items-center justify-content-between">
+    <a routerLink="/content" class="logo d-flex align-items-center">
+      <img src="assets/img/skillmatcherlogo.png" alt="">
+      <span class="d-none d-lg-block">SkillMatcher</span>
+    </a>
+   
+  </div><!-- End Logo -->
+
+ 
+
+
+  <div class="search-bar">
+    <form class="search-form d-flex align-items-center" method="POST" action="#">
+      <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+      <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+    </form>
+  </div><!-- End Search Bar -->
+ 
+  <style>
+    .nav-item {
+      display: flex;
+      gap: 10px; /* Ajustez cette valeur pour l'espacement souhaité */
+    }
+  </style>
+  
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="/about">About</a>
+      <a class="nav-link" href="/conseil">Conseils</a>
+      <a class="nav-link" href="/contact">Contact</a>
+    </li>
+  </ul>
+  <nav class="header-nav ms-auto">
+    <ul class="d-flex align-items-center">
+
+      <li class="nav-item d-block d-lg-none">
+        <a class="nav-link nav-icon search-bar-toggle " href="#">
+          <i class="bi bi-search"></i>
+        </a>
+      </li><!-- End Search Icon-->
+
+      
+
+     <!-- ... Autres éléments précédents ... -->
+
+     <li class="btn-wrapper">
+      <a routerLink="/register"  class="btn btn-primary"
+      style="background-color: #7DBEDD;"
+      class="btn btn-primary"
+     
+      onmouseover="this.style.backgroundColor='#28708D';"
+      onmouseout="this.style.backgroundColor='#7DBEDD';"
+      > Register</a>
+    </li>
+    
+<li class="btn-wrapper">
+  <a routerLink="/login"  class="btn btn-primary custom-btn"  style="background-color: #7DBEDD;"
+  class="btn btn-primary"
+ 
+  onmouseover="this.style.backgroundColor='#28708D';"
+  onmouseout="this.style.backgroundColor='#7DBEDD';"> Login</a>
+</li>
+
+<!-- ... Autres éléments suivants ... -->
+
+
+    </ul>
+  </nav><!-- End Icons Navigation -->
+
+</header><!-- End Header -->
+<router-outlet></router-outlet>

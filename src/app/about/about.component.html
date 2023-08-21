@@ -1,0 +1,78 @@
+<main id="main" class="main"  >
+
+    <div class="pagetitle" style="margin-left: -300px;">
+      <h1>skillmatcher application</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/content">Home</a></li>
+          
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <p style="text-align: center;" style="margin-left: 200px; margin-top: -20px;"  ><i>skillmatcher est une application de recrutement en ligne  </i></p>
+
+    <section class="section" style="margin-left: -300px;" >
+        
+        
+      <div class="row" style="justify-content: center;"  >
+        
+        
+
+        <div class="col-lg-6">
+            <img src="assets/img/rh.jpg" class="d-block w-100" alt="...">
+          <div class="card" >
+            <div class="card-body" >
+              <h5 class="card-title"></h5>
+              <p> Découvrez <b>SkillMatcher</b>, l'application ultime qui révolutionne le monde du recrutement.
+                Notre plateforme novatrice simplifie le processus de recrutement en mettant en relation les entreprises avec les meilleurs talents.
+                Grace à SkillMatcher, trouver le candidat idéal pour chaque poste devient une expérience fluide et efficace.
+              </p>
+
+              <!-- Line Chart -->
+              <canvas id="lineChart" style="max-height: 80px;"></canvas>
+              <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                  new Chart(document.querySelector('#lineChart'), {
+                    type: 'line',
+                    data: {
+                      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                      datasets: [{
+                        label: 'Line Chart',
+                        
+                        fill: false,
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1
+                      }]
+                    },
+                    options: {
+                      scales: {
+                        y: {
+                          beginAtZero: true
+                        }
+                      }
+                    }
+                  });
+                });
+                
+              </script>
+              <!-- End Line CHart -->
+             
+
+            </div>
+          </div>
+        </div>
+
+                       
+           
+        
+               
+             
+
+      
+
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
