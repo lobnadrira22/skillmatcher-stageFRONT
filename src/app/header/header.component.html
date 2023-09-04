@@ -2,7 +2,7 @@
 
   <div class="d-flex align-items-center justify-content-between">
     <a routerLink="/content" class="logo d-flex align-items-center">
-      <img src="assets/img/skillmatcherlogo.png" alt="">
+      <img src="assets/img/SMlogo.png" alt="">
       <span class="d-none d-lg-block">SkillMatcher</span>
     </a>
    
@@ -25,11 +25,11 @@
     }
   </style>
   
-  <ul class="nav">
-    <li class="nav-item">
-      <a class="nav-link" href="/about">About</a>
-      <a class="nav-link" href="/conseil">Conseils</a>
-      <a class="nav-link" href="/contact">Contact</a>
+  <ul class="nav" >
+    <li class="nav-item" >
+      <a  style="text-decoration: none;color: #333;font-weight: 400;" class="nav-link" href="/about">About</a>
+      <a  style="text-decoration: none;color: #333;font-weight: 400;" class="nav-link" href="/conseil">Conseils</a>
+      <a   style="text-decoration: none;color: #333;font-weight: 400;" class="nav-link" href="/contact">Contact</a>
     </li>
   </ul>
   <nav class="header-nav ms-auto">
@@ -46,21 +46,37 @@
      <!-- ... Autres éléments précédents ... -->
 
      <li class="btn-wrapper">
-      <a routerLink="/register"  class="btn btn-primary"
-      style="background-color: #7DBEDD;"
-      class="btn btn-primary"
+      <a routerLink="/register"  class="btn custom-btn"
+      
+      onmouseout="this.style.background='linear-gradient(45deg, #8670A9, #8670A9)'"
+  onmouseover="this.style.background='linear-gradient(45deg, #C26A92, #C26A92)'"
      
-      onmouseover="this.style.backgroundColor='#28708D';"
-      onmouseout="this.style.backgroundColor='#7DBEDD';"
+      style ="display: inline-block;
+    text-decoration: none;
+    padding: 10px 30px;
+    color: #fff;
+    background:  #8670A9;
+    
+    font-size: 15px;
+    border-radius: 10px;
+    border-top-right-radius: -1;"
       > Register</a>
     </li>
     
 <li class="btn-wrapper">
-  <a routerLink="/login"  class="btn btn-primary custom-btn"  style="background-color: #7DBEDD;"
-  class="btn btn-primary"
- 
-  onmouseover="this.style.backgroundColor='#28708D';"
-  onmouseout="this.style.backgroundColor='#7DBEDD';"> Login</a>
+  <a routerLink="/login"  class="btn custom-btn" 
+
+  onmouseout="this.style.background='linear-gradient(45deg, #8670A9, #8670A9)'"
+  onmouseover="this.style.background='linear-gradient(45deg, #C26A92, #C26A92)'"
+  style ="display: inline-block;
+  text-decoration: none;
+  padding: 10px 30px;
+  color: #fff;
+  background: #8670A9;
+  font-size: 15px;
+  border-radius: 10px;
+  border-top-right-radius: -1;"> Login</a>
+  
 </li>
 
 <!-- ... Autres éléments suivants ... -->

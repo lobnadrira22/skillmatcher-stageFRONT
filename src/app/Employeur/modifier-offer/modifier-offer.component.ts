@@ -11,8 +11,9 @@ import { OffreEmploiService } from 'src/app/offre-emploi.service';
 
 export class ModifierOfferComponent implements OnInit{
   
-  offreId!:number;
+  id!:number;
   forminput!: FormGroup;
+  offre: any={};
   
   constructor(private activateroute: ActivatedRoute,
     private fb:FormBuilder,
@@ -21,51 +22,45 @@ export class ModifierOfferComponent implements OnInit{
 
   }
   ngOnInit(): void {
-    this.activateroute.params.subscribe(params =>{
-      this.offreId= +params['id'];
-      this.loadOffreDetails();
-    });
-      
-    this.forminput = this.fb.group({
-      nom:['',Validators.required],
-      description:['',Validators.required],
-      dateexpiration:['',Validators.required],
-      selectedCategory:[''],
-      image:[null],
-    });
-  }
-
-   
-
-  loadOffreDetails() {
-    this.offreser.getOffreById(this.offreId).subscribe(
-      (offr) => {
-        // Populate form controls with offre details
-        this.forminput.patchValue({
-          nom: offr.nom,
-          description: offr.description,
-          dateexpiration: offr.dateexpiration,
-          selectedCategory:offr.selectedCategory,
-          image:offr.image
-        });
-      },
-      (error) => {
-        console.error('Erreur lors du chargement des détails de l\'offre', error);
+    this.activateroute.params.subscribe(
+      (param)=>{
+        this.id=param['id']
       }
-    );
+    )
+    this.forminput = this.fb.group({
+      'nom': ['', Validators.required],
+      'description': ['', Validators.required],
+      'dateexpiration': ['', Validators.required],
+      'categorieoffre': [''],
+      'image': [null]
+    });
+this.offreser.getOffreById(this.id).subscribe(
+  (offre:any)=> {
+    this.forminput.controls['nom'].setValue(offre.nom)
+    this.forminput.controls['description'].setValue(offre.description)
+    this.forminput.controls['dateexpiration'].setValue(offre.dateexpiration)
+    this.forminput.controls['categorieoffre'].setValue(offre.categorieoffre)
+    this.forminput.controls['image'].setValue(offre.image)
+
   }
+)
+    
+  }
+
+  
   
     updateOffre() {
-      const updatedOffreData = this.forminput.value;
-      this.offreser.updateOffre(this.offreId, updatedOffreData).subscribe(
-        (updatedOffre) => {
-          console.log('Offre mise à jour avec succès', updatedOffre);
-          this.router.navigate(['/body/gestionoffre']);
-        },
-        (error) => {
-          console.error('Erreur lors de la mise à jour de l\'offre', error);
+      const offre = this.offre;
+      offre.nom=this.forminput.controls['nom'].value
+      offre.categorieoffre = this.forminput.controls['categorieoffre'].value
+      offre.description=this.forminput.controls['description'].value
+      offre.dateexpiration=this.forminput.controls['dateexpiration'].value
+      offre.image=this.forminput.controls['image'].value
+      this.offreser.updateOffre(this.id,offre).subscribe(
+        (off)=>{
+          console.log(off.nom)
         }
-      );
+      )
     
 
 }

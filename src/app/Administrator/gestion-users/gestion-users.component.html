@@ -1,0 +1,134 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+   
+  </head>
+  <main id="main" class="main">
+    <div class="d-flex justify-content-center mt-2">
+       <button style="margin-bottom: 10px;margin-right: -750px;" class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalajoutAdmin">Ajouter</button>
+     </div>
+   
+   <table class="table">
+     <thead>
+       <tr>
+         <th scope="col">#</th>
+         <th scope="col">nom</th>
+         <th scope="col">prenom</th>
+         <th scope="col">nomentreprise</th>
+         <th scope="col">email</th>
+         <th scope="col">mdp</th>
+         <th scope="col">action</th>
+       </tr>
+     </thead>
+     <tbody>
+        <tr *ngFor="let employeur of employeurs">
+            <th scope="row">{{ employeur.idEmployeur }}</th>
+            <td>{{ employeur.nom }}</td>
+            <td>{{ employeur.prenom }}</td>
+            <td>{{ employeur.nomentreprise }}</td>
+            <td>{{ employeur.email }}</td>
+            <td>{{ employeur.mdp }}</td>
+            <td>
+           <!-- Add edit and delete buttons here -->
+           <button class="btn btn-info"  data-bs-toggle="modal" data-bs-target="#myModalview" (click)="viewEmployeurDetails(employeur.idEmployeur)" >
+            <i class="fas fa-eye"></i> 
+        </button>
+        <button  class="btn btn-primary">
+          <i class="fas fa-pencil-alt"></i> 
+       </button>
+       
+        <button class="btn btn-danger" (click)="supprimerEmployeur(employeur.idEmployeur)" >
+          <i class="fas fa-trash-alt"></i>
+        </button>
+        
+        
+         </td>
+       </tr>
+     </tbody>
+   </table>
+   </main>
+
+ 
+   <div class="modal fade" id="exampleModalajoutAdmin" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel2">Ajout utilisateur</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+    <form [formGroup]="userForm">
+      <div class="row mb-3">
+        <label for="inputNom" class="col-sm-2 col-form-label">Nom</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" formControlName="nom">
+          <div class="invalid-feedback" *ngIf="userForm.controls['nom'].errors?.['required'] && userForm.controls['nom'].touched">Nom requis !!!</div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="inputPrenom" class="col-sm-2 col-form-label">Prenom</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" formControlName="prenom">
+          <div class="invalid-feedback" *ngIf="userForm.controls['prenom'].errors?.['required'] && userForm.controls['prenom'].touched">Prenom requis !!!</div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="inputNomen" class="col-sm-2 col-form-label">Nom entreprise</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" formControlName="nomentreprise">
+          <div class="invalid-feedback" *ngIf="userForm.controls['nomentreprise'].errors?.['required'] && userForm.controls['nomentreprise'].touched">Nom entreprise requis !!!</div>
+        </div>
+      </div>
+      <!-- ... Autres champs ... -->
+      <div class="row mb-3">
+        <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control" id="inputEmail" name="inputEmail" formControlName="email">
+          <div class="invalid-feedback" *ngIf="userForm.controls['email'].errors?.['required'] && userForm.controls['email'].touched">Email requis !!!</div>
+          <div class="invalid-feedback" *ngIf="userForm.controls['email'].errors?.['email'] && userForm.controls['email'].touched">Email syntaxe incorrecte !!!</div>
+          <div class="invalid-feedback" *ngIf="emailErrorMessage">{{ emailErrorMessage }}</div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+        <div class="col-sm-10">
+          <input type="password" class="form-control" formControlName="mdp">
+          <div class="invalid-feedback" *ngIf="userForm.controls['mdp'].errors?.['required'] && userForm.controls['mdp'].touched">Mot de passe requis !!!</div>
+        </div>
+      </div>
+      <!-- ... Autres champs ... -->
+      <div class="row mb-3">
+        <label class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-10">
+          <button type="button" class="btn btn-primary" (click)="ajouterEmployeur()">enregistrer</button>
+        </div>
+      </div>
+    </form>
+  
+</div>
+</div>
+</div>
+</div>
+  
+  <!-- modal pour consultation -->
+  <div class="modal" tabindex="-1" id="myModalview">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Informations</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p><strong>Nom:</strong>{{ employeurDetails.nom }} </p>
+          <p><strong>Prenom:</strong> {{ employeurDetails.prenom }}</p>
+          <p><strong>Nom entreprise:</strong> {{ employeurDetails.nomentreprise }} </p>
+          <p><strong>Email:</strong>{{ employeurDetails.email }} </p>
+          
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div> 

@@ -26,9 +26,9 @@ export class OffreEmploiService {
 getOffreById(offreId: number): Observable<any> {
   return this.http.get(`${this.baseUrl}/${offreId}`);
 }
-updateOffre(offreId: number, updatedOffreData: any): Observable<any> {
-  const url = `${this.baseUrl}/${offreId}`;
-  return this.http.put(url, updatedOffreData); // Send updatedOffreData as the request body
+updateOffre(id: number, offre: any): Observable<any> {
+  const url = `${this.baseUrl}/${id}`;
+  return this.http.put(`${this.baseUrl}/${id}`,offre);
 }
 
 

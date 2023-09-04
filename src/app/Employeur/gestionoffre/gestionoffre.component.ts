@@ -121,6 +121,11 @@ export class GestionoffreComponent implements OnInit {
     );
   }
   
+  gotomodifieroffer(id: number){
+  this.router.navigate(['/body/modifier-offer',id])
+  }
+
+
 
   
   confirmDelete(offreId: number) {
@@ -149,9 +154,6 @@ export class GestionoffreComponent implements OnInit {
     });
   }
   
-  navigateToModifierOffer(offreId: number) {
-    this.router.navigate(['/body/gestionoffre/modifier-offre', offreId]);
-  }
-  
+
   
 }

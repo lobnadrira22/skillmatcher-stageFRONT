@@ -13,18 +13,18 @@
 
   <form [formGroup]="forminput">
     <div class="mb-2">
-      <label for="inputNom" class="form-label">Nom</label>
-      <input type="text" class="form-control" id="inputNom" name="nom" formControlName="nom">
+      <label  class="form-label">Nom</label>
+      <input type="text" class="form-control"  name="nom" formControlName="nom">
     </div>
     
     <div class="mb-2">
-      <label for="inputDescription" class="form-label">Description</label>
-      <textarea class="form-control" id="inputDescription" name="description" formControlName="description" rows="4"></textarea>
+      <label  class="form-label">Description</label>
+      <textarea class="form-control" name="description" formControlName="description" rows="4"></textarea>
     </div>
     
     <div class="mb-2">
-      <label for="inputCategory" class="form-label">Select Category</label>
-      <select class="form-select" id="inputCategory" name="selectedCategory" formControlName="selectedCategory">
+      <label class="form-label">Select Category</label>
+      <select class="form-select" name="categorieoffre" formControlName="categorieoffre">
         <option value="" disabled selected>Select category</option>
         <option value="IT">IT</option>
         <option value="Marketing">Marketing</option>
@@ -32,14 +32,15 @@
       </select>
     </div>
     
+    
     <div class="mb-2">
-      <label for="inputDate" class="form-label">Date d'expiration</label>
-      <input type="date" class="form-control" id="inputDate" name="dateexpiration" formControlName="dateexpiration">
+      <label  class="form-label">Date d'expiration</label>
+      <input type="date" class="form-control"  name="dateexpiration" formControlName="dateexpiration">
     </div>
     
     <div class="mb-2">
-      <label for="inputImage" class="form-label">Image</label>
-      <input type="file" class="form-control" id="inputImage" name="image" formControlName="image">
+      <label  class="form-label">Image</label>
+      <input type="file" class="form-control"  name="image" formControlName="image">
     </div>
     
     

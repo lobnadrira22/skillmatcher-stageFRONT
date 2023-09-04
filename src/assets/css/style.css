@@ -17,6 +17,10 @@ body {
   font-family: "Open Sans", sans-serif;
   background: #f6f9ff;
   color: #444444;
+ 
+ 
+ 
+  
 }
 
 a {
@@ -365,14 +369,14 @@ h6 {
 }
 
 .logo img {
-  max-height: 26px;
+  max-height: 40px;
   margin-right: 6px;
 }
 
 .logo span {
   font-size: 26px;
   font-weight: 700;
-  color: #012970;
+  color: #28708D;
   font-family: "Nunito", sans-serif;
 }
 
@@ -1250,3 +1254,114 @@ h6 {
   color: #28a745; /* Green color for success messages */
   margin-top: 5px;
 }
+.appcontentfront{
+  margin-top: 10%;
+  max-width: 600px;
+  margin-left: 5%;
+
+  /* Ajoutez cette ligne pour que le contenu soit relatif au parent */
+  
+}
+.appcontentfront h1{
+  font-size: 70px;
+  color: #222;
+}
+.appcontentfront p{
+  margin:10px 0 30px;
+  color: #333;
+  animation-delay: 0.5s;
+}
+
+
+.appcontentfront .btn-front{
+  padding: 15px 80px;
+  animation-delay: 1s;
+  
+}
+.feature-img{
+  width: 500px ;
+  position: absolute;
+  top: 0;
+  margin-top: 50px;
+  right: 10%;
+}
+.feature-img.anim{
+  animation-delay: 1.5s;
+}
+
+.anim{
+  opacity: 0;
+  transform: translateY(30px);
+  animation: moveup 0.5s linear forwards;
+}
+@keyframes moveup{
+  100%{
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+.conteneur {
+    display: flex;
+    align-items: center;
+  }
+
+  .conteneur p {
+    margin-right: 25px;
+  }
+
+  .conteneur img {
+    max-width: 500px;
+  }
+
+  .graphique {
+    width: 300px;
+    height: 200px;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: flex-end;
+  }
+  
+  .barre {
+    width: 70px;
+    background-color: #007bff;
+    transition: height 0.5s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .barre p {
+    margin: 0; /* Pour supprimer la marge par défaut des paragraphes */
+    font-size: 12px; /* Taille de police personnalisée */
+    color: #fff; /* Couleur du texte */
+  }
+  .barre-label {
+    position: relative;
+    text-align: center;
+    font-size: 12px; /* Ajustez la taille de la police selon vos préférences */
+    top: -2px; /* Réglez cette valeur pour déplacer l'étiquette vers le haut ou le bas de la barre */
+  }
+  
+  
+  /* Styles spécifiques pour chaque barre (vous pouvez utiliser ngFor pour générer dynamiquement) */
+  .barre:nth-child(1) {
+    background-color: #007bff;
+  }
+  
+  .barre:nth-child(2) {
+    background-color: #ff5722;
+  }
+  
+  .barre:nth-child(3) {
+    background-color: #4caf50;
+  }
+  
+  .barre:nth-child(4) {
+    background-color: #f44336;
+  }
+  
+  .barre:nth-child(5) {
+    background-color: #9c27b0;
+  }
+  

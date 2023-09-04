@@ -1,5 +1,47 @@
 <main id="main" class="main">
-<div class="container">
+  <div class="container">
+    <button    class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#eventModalajout">Ajouter un événement</button>
     <full-calendar [options]="calendarOptions"></full-calendar>
   </div>
+
+<!-- Le modal pour ajouter un événement -->
+<div class="modal" id="eventModalajout" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Ajouter un événement</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        
+      </div>
+      <div class="modal-body">
+        <form id="eventForm">
+          <div class="form-group">
+            <label for="dateEntretien">Date d'entretien</label>
+            <input type="date" class="form-control" id="dateEntretien" name="dateEntretien" [(ngModel)]="newEventDate">
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3" [(ngModel)]="newEventDescription"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-close" data-bs-dismiss="modal"  class="btn btn-secondary" >Fermer</button>
+        <button   (click)="addEvent()"  type="button" class="btn btn-primary" id="saveEventBtn">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  
+ 
+
+
+
 </main>
+
+
+
+

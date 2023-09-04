@@ -1,7 +1,35 @@
 <app-topbar></app-topbar>
 <app-leftside></app-leftside>
+<div class="conteneur" style="margin-top: 80px; margin-left: 25%;">
+  
+    <h1>Welcome to your space</h1>
+    <p>SkillMatcher is a great platform, use it properly
+    </p>
+ 
+  <img src="/assets/img/welcomesm.png" alt="Image de bienvenue" style="float: center;width: 500px; margin-left: 25px;">
+</div>
+<section class="section"style="margin-left: 25%;">
+  <div class="additional-content" style="margin-top: 10px;">
+    <h2 style="margin-left: 10px;color: black;">Toutes les offres postées par les employeurs</h2>
+  </div>
 
-<div class="main-content">
-  <!-- Ajoutez d'autres contenus ou composants ici -->
+  <div class="row justify-content-center">
+    <div class="col-lg-3" *ngFor="let offre of offres">
+      <div class="card">
+        <img class="card-img-top" src="/assets/img/joboppr.png" alt="Image 1">
+      
+        <div class="card-body">
+          <h5 class="card-title"> {{ offre.nom }}</h5>
+          <p class="card-text"><b>Description :</b> {{ offre.description }}</p>
+          <p class="card-text"><b>Date d'expiration : </b>{{ offre.dateexpiration | date:'medium' }}</p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="main-content" >
+ 
+
 </div>
 

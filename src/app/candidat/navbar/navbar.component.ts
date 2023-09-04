@@ -1,3 +1,4 @@
+import { CandidatserviceService } from './../../candidatservice.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,6 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+  userFullName: string='';
+
+  constructor(private Candidatservice: CandidatserviceService) {
+    this.Candidatservice.userFullName$.subscribe(userFullName => {
+      this.userFullName = userFullName;
+    });
+  }
   toggle() {
     const element = document.body as HTMLBodyElement
     element.classList.toggle('toggle-sidebar')

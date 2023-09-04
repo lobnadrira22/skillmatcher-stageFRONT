@@ -1,0 +1,78 @@
+
+    <!DOCTYPE html>
+    
+    <html lang="fr" dir="ltr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Votre titre ici</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            /* Google Font Link */
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+    
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: "Poppins", sans-serif;
+            }
+    
+            body {
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+               
+                padding: 30px;
+            }
+    
+            section {
+                display: flex;
+                align-items: center; /* Centre verticalement le contenu */
+            }
+    
+            .appcontentfront {
+                flex: 1; /* Permet à cet élément de prendre autant d'espace que possible */
+                padding-right: 20px; /* Ajoute un espacement entre le texte et l'image */
+            }
+    
+            .appcontentfront img {
+                max-width: 100%; /* Assurez-vous que l'image ne dépasse pas la largeur du conteneur */
+                height: auto;
+            }
+    
+            /* Votre CSS pour le bouton */
+            .btn {
+                display: inline-block;
+                text-decoration: none;
+                padding: 14px 40px;
+                color: #fff;
+               
+                font-size: 14px;
+                border-radius: 30px;
+                border-top-right-radius: -1;
+                
+            }
+    
+            .btn:hover {
+                background: linear-gradient(45deg, #8670A9, #C26A92); /* Changement de couleur au survol */
+            }
+        </style>
+    </head>
+    <body>
+        <app-navbar></app-navbar>
+        <app-asidebar></app-asidebar>
+        <section>
+            <div class="appcontentfront">
+                <h1 class="anim">Build your future</h1>
+                <p>SkillMatcher est une nouvelle plateforme de médias sociaux pour créer des opportunités d'emploi et permettre aux candidats de postuler en ligne. Découvrez toutes ses fonctionnalités étonnantes.</p>
+                <a href="/content" class="btn">Vérifier l'application</a>
+            </div>
+            <div>
+                <img  src="assets/img/SMApplication.png" alt="Application SkillMatcher">
+            </div>
+        </section>
+        
+    </body>
+    </html>

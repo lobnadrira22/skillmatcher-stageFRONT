@@ -18,6 +18,9 @@ import { GestionoffreComponent } from './Employeur/gestionoffre/gestionoffre.com
 import { CalendrierComponent } from './Employeur/calendrier/calendrier.component';
 import { TraitementCandidatComponent } from './Employeur/traitement-candidat/traitement-candidat.component';
 import { ModifierOfferComponent } from './Employeur/modifier-offer/modifier-offer.component';
+import { ContainerComponent } from './Administrator/container/container.component';
+import { GestionUsersComponent } from './Administrator/gestion-users/gestion-users.component';
+import { WelcomepageComponent } from './candidat/welcomepage/welcomepage.component';
 
 
 
@@ -36,21 +39,35 @@ const routes: Routes = [
   {path:"contact",component:ContactComponent},
   {path:"conseil",component:ConseilComponent},
   {
+    //candidat
     path: "accueil",
     component: AccueilComponent,
     children: [
       { path: "profil", component: ProfilComponent },
       { path: "offreemploi", component: OffreEmploiComponent },
-      {path: "candidature", component:CandidatureComponent}
+      {path: "candidature", component:CandidatureComponent},
+      {path:"welcomepage",component:WelcomepageComponent}
     
   ]
 }, 
+//employeur
 {path:"body",component:BodyComponent,
 children:[
   {path:"gestionoffre",component:GestionoffreComponent},
   {path:"calendrier",component:CalendrierComponent},
   {path:"traitement",component:TraitementCandidatComponent},
-  {path: 'body/gestionoffre/modifier-offre/:id',component:ModifierOfferComponent}
+  {path: "modifier-offer/:id", component: ModifierOfferComponent },
+
+
+]
+},
+//admin
+{path:"container",component:ContainerComponent,
+children:[
+  {path:"gestiousers",component:GestionUsersComponent}
+
+
+
 ]
 }
  

@@ -30,6 +30,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { CalendrierComponent } from './Employeur/calendrier/calendrier.component';
 import { TraitementCandidatComponent } from './Employeur/traitement-candidat/traitement-candidat.component';
 import { ModifierOfferComponent } from './Employeur/modifier-offer/modifier-offer.component';
+import { HautbarComponent } from './Administrator/hautbar/hautbar.component';
+import { DashboardComponent } from './Administrator/dashboard/dashboard.component';
+import { ContainerComponent } from './Administrator/container/container.component';
+import { GestionUsersComponent } from './Administrator/gestion-users/gestion-users.component';
+import { WelcomepageComponent } from './candidat/welcomepage/welcomepage.component';
+import { BottomComponent } from './candidat/bottom/bottom.component';
 
 
 
@@ -62,6 +68,12 @@ import { ModifierOfferComponent } from './Employeur/modifier-offer/modifier-offe
       CalendrierComponent,
       TraitementCandidatComponent,
       ModifierOfferComponent,
+      HautbarComponent,
+      DashboardComponent,
+      ContainerComponent,
+      GestionUsersComponent,
+      WelcomepageComponent,
+      BottomComponent,
     
     
   ],
